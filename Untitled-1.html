@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .pointing-dots {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-image;https://www.bing.com/th?id=OIP.1RlXBxeemxVMD9XMGfjf1QHaEK&w=236&c=11&rs=1&qlt=90&bgcl=ececec&o=6&pid=PersonalBing&p=0 ;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>My To-Do List</h2>
+
+<input type="text" id="taskInput" placeholder="New task...">
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+
+<script>
+    function addTask() {
+        var taskInput = document.getElementById("taskInput");
+        var taskList = document.getElementById("taskList");
+
+        if (taskInput.value.trim() !== "") {
+            var listItem = document.createElement("li");
+            listItem.innerHTML = '<span class="pointing-dots" onclick="toggleTask(this)"></span>' + taskInput.value;
+            taskList.appendChild(listItem);
+            taskInput.value = "";
+        }
+    }
+
+    function toggleTask(span) {
+        var listItem = span.parentNode;
+        listItem.classList.toggle("completed");
+    }
+</script>
+
+</body>
+</html>
